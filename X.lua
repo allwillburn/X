@@ -236,5 +236,5 @@ OnProcessSpell(function(unit,spell)
 				CastSkillShot(_W, target)
 			end
 		 end
-      
+      end
 end)
