@@ -233,25 +233,14 @@ end)
 
 
 OnProcessSpell(function(unit,spell)
-  if unit.team ~= myHero.team then
-	-- if unit.charName == "Kayle" then
-		-- print(spell.name)
-	-- end
+ 
     if CC[spell.name] ~= nil then
       local skill = CC[spell.name]
       if skill.spellType == "target" and spell.target.team == myHero.team and GetObjectType(spell.target) == Obj_AI_Hero then
-         if skill.projectileSpeed < 1500 then
-			incSpells[spell.name] = {sType = skill.spellType, sPos = spell.startPos, ePos = spell.target, delay = skill.spellDelay or 250, radius = skill.spellRadius, speed = skill.projectileSpeed or math.huge, createTime = GetTickCount()}	
-		 else
+      
 			if CanUseSpell(myHero,_W) == READY and GetDistance(spell.target) < 850 then
 				CastSkillShot(_W, target)
 			end
 		 end
-      elseif skill.spellType == "line" then
-			incSpells[spell.name] = {sType = skill.spellType, sPos = spell.startPos, ePos = (spell.startPos + (VectorWay(spell.startPos, spell.endPos)):normalized() * skill.spellRange), delay = skill.spellDelay or 250, radius = skill.spellRadius, speed = skill.projectileSpeed, createTime = GetTickCount()}
-      elseif skill.spellType == "circular" then
-			incSpells[spell.name] = {sType = skill.spellType, sPos = spell.startPos, ePos = spell.endPos, delay = skill.spellDelay or 250, radius = skill.spellRadius, speed = skill.projectileSpeed or math.huge, createTime = GetTickCount()}	
-      end
-    end
-  end
+      
 end)
