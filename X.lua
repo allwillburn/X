@@ -224,12 +224,6 @@ end
 local incSpells = {}
 local myTeam = {}
 
-OnLoad(function()
-    myTeam[GetNetworkID(myHero)] = myHero
-    for i,v in pairs(GetAllyHeroes()) do
-    	myTeam[GetNetworkID(v)] = v
-    end
-end)
 
 
 OnProcessSpell(function(unit,spell)
