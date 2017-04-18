@@ -39,7 +39,7 @@ end
 			Cast(_E, target)
 end      
       
-      if ChampMenu.Combo.R1:Value() and Ready(_R) and ValidTarget(target, GetCastRange(myHero,_R)) then
+      if ChampMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, GetCastRange(myHero,_R)) then
 			Cast(_R, target)
       end	
     end
