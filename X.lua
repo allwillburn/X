@@ -35,11 +35,11 @@ end
 			Cast(_W, target)
 end	
 
- if UniversalMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, GetCastRange(myHero,_E)) then
+ if ChampMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, GetCastRange(myHero,_E)) then
 			Cast(_E, target)
 end      
       
-      if UniversalMenu.Combo.R1:Value() and Ready(_R) and ValidTarget(target, GetCastRange(myHero,_R)) then
+      if ChampMenu.Combo.R1:Value() and Ready(_R) and ValidTarget(target, GetCastRange(myHero,_R)) then
 			Cast(_R, target)
       end	
     end
