@@ -27,20 +27,20 @@ if Mix:Mode() == "Combo" then
 
 if ChampMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, GetCastRange(myHero,_Q)) then
 		     if target ~= nil then 
-                         Cast(Q, target)
+                         CastSkillShot(_Q, target)
                      end
 end
 
  if ChampMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, GetCastRange(myHero,_W)) then
-			Cast(W, target)
+			CastSkillShot(_W, target)
 end	
 
  if ChampMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, GetCastRange(myHero,_E)) then
-			Cast(E, target)
+			CastTargetSpell(_E, target)
 end      
       
       if ChampMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, GetCastRange(myHero,_R)) then
-			Cast(R, target)
+			CastSkillShot(_R, target)
       end	
     end
   end)  
