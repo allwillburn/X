@@ -42,7 +42,7 @@ OnTick(function (myHero)
 
   
   if IsReady(_R) and IsReady(_E) and IsReady(_Q) and ValidTarget(enemy, RRange) and ValidTarget(enemy, ERange) and ValidTarget(enemy, QRange) and ExectuteMenu.KillSteal.Combo:Value() and GetHP(enemy) < (getdmg("Q",enemy) + getdmg("E",enemy) + getdmg("R",enemy)) then
-		                     CastTargetSpell(target, _Q)  CastSkillShot(_E, target.pos)  CastSkillShot(_R, target)
+		                     CastTargetSpell(target, _Q) and CastSkillShot(_E, target.pos) and CastSkillShot(_R, target)
                  end
 
       	
