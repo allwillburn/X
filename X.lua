@@ -3,15 +3,15 @@ require("OpenPredict")
 require("DamageLib")
 
 
-local UniversalMenu = Menu("Universal", "Universal")
+local ExectuteMenu = Menu("Exectute", "Execute")
 
-UniversalMenu:SubMenu("KillSteal", "KillSteal")
+ExectuteMenu:SubMenu("Exectute", "Exectute")
 
-UniversalMenu.KillSteal:Boolean("Q", "Use Q ", true)
-UniversalMenu.KillSteal:Boolean("W", "Use W ", true)
-UniversalMenu.KillSteal:Boolean("E", "Use E ", true)
-UniversalMenu.KillSteal:Boolean("R", "Use R ", true)
-UniversalMenu.KillSteal:Boolean("Combo", "Use Full Combo ", true)
+ExectuteMenu.KillSteal:Boolean("Q", "Use Q ", true)
+ExectuteMenu.KillSteal:Boolean("W", "Use W ", true)
+ExectuteMenu.KillSteal:Boolean("E", "Use E ", true)
+ExectuteMenu.KillSteal:Boolean("R", "Use R ", true)
+ExectuteMenu.KillSteal:Boolean("Combo", "Use Full Combo ", true)
 
 OnTick(function (myHero)
 	local target = GetCurrentTarget()
@@ -20,20 +20,20 @@ OnTick(function (myHero)
 	local BonusAP = GetBonusDmg(myHero)
         local BaseAP = GetBaseDamage(myHero)
 
-   if IsReady(_Q) and ValidTarget(enemy, QRange) and UniversalMenu.KillSteal.Q:Value() and GetHP(enemy) < getdmg("Q",enemy) then		         
+   if IsReady(_Q) and ValidTarget(enemy, QRange) and ExectuteMenu.KillSteal.Q:Value() and GetHP(enemy) < getdmg("Q",enemy) then		         
                                       CastSkillShot(_Q, target)
 		         
                  end 
 
-  if IsReady(_W) and ValidTarget(enemy, WRange) and UniversalMenu.KillSteal.W:Value() and GetHP(enemy) < getdmg("W",enemy) then		         
+  if IsReady(_W) and ValidTarget(enemy, WRange) and ExectuteMenu.KillSteal.W:Value() and GetHP(enemy) < getdmg("W",enemy) then		         
                                       CastSkillShot(_W, target)
 		 end 
 
-  if IsReady(_E) and ValidTarget(enemy, ERange) and UniversalMenu.KillSteal.E:Value() and GetHP(enemy) < getdmg("E",enemy) then
+  if IsReady(_E) and ValidTarget(enemy, ERange) and ExectuteMenu.KillSteal.E:Value() and GetHP(enemy) < getdmg("E",enemy) then
 		                      CastSkillShot(_E, target)
                  end
 
-  if IsReady(_R) and ValidTarget(enemy, RRange) and UniversalMenu.KillSteal.R:Value() and GetHP(enemy) < getdmg("R",enemy) then
+  if IsReady(_R) and ValidTarget(enemy, RRange) and ExectuteMenu.KillSteal.R:Value() and GetHP(enemy) < getdmg("R",enemy) then
 		                      CastSkillShot(_R, target)
                  end
 
@@ -41,7 +41,7 @@ OnTick(function (myHero)
   
 
   
-  if IsReady(_R) and IsReady(_E) and IsReady(_W) and IsReady(_Q) and ValidTarget(enemy, RRange) and ValidTarget(enemy, ERange) and ValidTarget(enemy, WRange) and ValidTarget(enemy, QRange) and UniversalMenu.KillSteal.Combo:Value() and GetHP(enemy) < (getdmg("Q",enemy) + getdmg("W",enemy) + getdmg("E",enemy) + getdmg("R",enemy)) then
+  if IsReady(_R) and IsReady(_E) and IsReady(_W) and IsReady(_Q) and ValidTarget(enemy, RRange) and ValidTarget(enemy, ERange) and ValidTarget(enemy, WRange) and ValidTarget(enemy, QRange) and ExectuteMenu.KillSteal.Combo:Value() and GetHP(enemy) < (getdmg("Q",enemy) + getdmg("W",enemy) + getdmg("E",enemy) + getdmg("R",enemy)) then
 		                     CastTargetSpell(target, _Q)  CastSpell(_W)  CastSkillShot(_E, target.pos)  CastSkillShot(_R, target)
                  end
 
