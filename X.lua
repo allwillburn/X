@@ -5,7 +5,7 @@ require("DamageLib")
 
 local ExectuteMenu = Menu("Exectute", "Execute")
 
-ExectuteMenu:SubMenu("Exectute", "Exectute")
+ExectuteMenu:SubMenu("KillSteal", "KillSteal")
 
 ExectuteMenu.KillSteal:Boolean("Q", "Use Q ", true)
 ExectuteMenu.KillSteal:Boolean("W", "Use W ", true)
