@@ -41,7 +41,7 @@ OnTick(function (myHero)
   
 
   
-  if IsReady(_R) and and IsReady(_E) and IsReady(_W) and IsReady(_Q) and ValidTarget(enemy, RRange) and ValidTarget(enemy, ERange) and ValidTarget(enemy, WRange) and ValidTarget(enemy, QRange) and UniversalMenu.KillSteal.Combo:Value() and GetHP(enemy) < (getdmg("Q",enemy) + getdmg("W",enemy) + getdmg("E",enemy) + getdmg("R",enemy)) then
+  if IsReady(_R) and IsReady(_E) and IsReady(_W) and IsReady(_Q) and ValidTarget(enemy, RRange) and ValidTarget(enemy, ERange) and ValidTarget(enemy, WRange) and ValidTarget(enemy, QRange) and UniversalMenu.KillSteal.Combo:Value() and GetHP(enemy) < (getdmg("Q",enemy) + getdmg("W",enemy) + getdmg("E",enemy) + getdmg("R",enemy)) then
 		                      CastSkillShot(_Q, target) and CastSkillShot(_W, target) and CastSkillShot(_E, target) and CastSkillShot(_R, target)
                  end
 
