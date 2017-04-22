@@ -30,7 +30,7 @@ OnTick(function (myHero)
 		 end 
 
   if IsReady(_E) and ValidTarget(enemy, ERange) and ExectuteMenu.KillSteal.E:Value() and GetHP(enemy) < getdmg("E",enemy) then
-		                      CastSkillShot(_E, target)
+		                      SkillShot(_E, target)
                  end
 
   if IsReady(_R) and ValidTarget(enemy, RRange) and ExectuteMenu.KillSteal.R:Value() and GetHP(enemy) < getdmg("R",enemy) then
@@ -41,11 +41,15 @@ OnTick(function (myHero)
   
 
   
-  if IsReady(_Q) and ValidTarget(enemy, RRange) and ValidTarget(enemy, ERange) and ValidTarget(enemy, QRange) and ExectuteMenu.KillSteal.Combo:Value() and GetHP(enemy) < (getdmg("Q",enemy) + getdmg("E",enemy) + getdmg("R",enemy)) then
-		                     CastTargetSpell(target, _Q) and IsReady(_E) then CastSkillShot(_E, target.pos) and IsReady(_R) then CastSkillShot(_R, target)
-                 end
-
-      	
+  if IsReady(_Q) and IsReady(_E) and IsReady(_R) and ValidTarget(enemy, RRange) and ValidTarget(enemy, ERange) and ValidTarget(enemy, QRange) and ExectuteMenu.KillSteal.Combo:Value() and GetHP(enemy) < (getdmg("Q",enemy) + getdmg("E",enemy) + getdmg("R",enemy)) then
+		                     CastTargetSpell(target, _Q) 
+			             end
+  if IsReady(_E) and IsReady(_R) and ValidTarget(enemy, RRange) and ValidTarget(enemy, ERange) and ExectuteMenu.KillSteal.Combo:Value() and GetHP(enemy) < (getdmg("Q",enemy) + getdmg("E",enemy) + getdmg("R",enemy)) then
+		                     CastSkillShot(_E, target.pos)
+			             end
+  if IsReady(_R) and ValidTarget(enemy, RRange) and ExectuteMenu.KillSteal.Combo:Value() and GetHP(enemy) < (getdmg("Q",enemy) + getdmg("E",enemy) + getdmg("R",enemy)) then
+		                     CastSkillShot(_R, target)
+			             end	
 	 	
        
    
