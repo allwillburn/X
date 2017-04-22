@@ -1,46 +1,54 @@
-if FileExist(COMMON_PATH.."MixLib.lua") then
- require('MixLib')
-else
- PrintChat("MixLib not found. Please wait for download.")
- DownloadFileAsync("https://raw.githubusercontent.com/VTNEETS/NEET-Scripts/master/MixLib.lua", COMMON_PATH.."MixLib.lua", function() PrintChat("Downloaded MixLib. Please 2x F6!") return end)
-end
-
-
-
-require("DamageLib")
 require("DeftLib")
+require("OpenPredict")
+require("DamageLib")
 
-local ChampMenu = Menu("Champ", "Champ")
 
-ChampMenu:SubMenu("Combo", "Combo")
+local UniversalMenu = Menu("Universal", "Universal")
 
-ChampMenu.Combo:Boolean("Q", "Use Q in combo", true)
-ChampMenu.Combo:Boolean("W", "Use W in combo", true)
-ChampMenu.Combo:Boolean("E", "Use E in combo", true)
-ChampMenu.Combo:Boolean("R", "Use R in combo", true)
+UniversalMenu:SubMenu("KillSteal", "KillSteal")
+
+UniversalMenu.KillSteal:Boolean("Q", "Use Q ", true)
+UniversalMenu.KillSteal:Boolean("W", "Use W ", true)
+UniversalMenu.KillSteal:Boolean("E", "Use E ", true)
+UniversalMenu.KillSteal:Boolean("R", "Use R ", true)
+UniversalMenu.KillSteal:Boolean("Combo", "Use Full Combo ", true)
 
 OnTick(function (myHero)
-local target = GetCurrentTarget()
+	local target = GetCurrentTarget()
+        local BonusAD = GetBonusDmg(myHero)
+        local BaseAD = GetBaseDamage(myHero)
+	local BonusAP = GetBonusDmg(myHero)
+        local BaseAP = GetBaseDamage(myHero)
 
---COMBO
-if Mix:Mode() == "Combo" then
+   if IsReady(_Q) and ValidTarget(enemy, QRange) and UniversalMenu.KillSteal.Q:Value() and GetHP(enemy) < getdmg("Q",enemy) then		         
+                                      CastSkillShot(_Q, target)
+		         
+                 end 
 
-if ChampMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, GetCastRange(myHero,_Q)) then
-		     if target ~= nil then 
-                         CastSkillShot(_Q, target)
-                     end
-end
+  if IsReady(_W) and ValidTarget(enemy, WRange) and UniversalMenu.KillSteal.W:Value() and GetHP(enemy) < getdmg("W",enemy) then		         
+                                      CastSkillShot(_W, target)
+		 end 
 
- if ChampMenu.Combo.W:Value() and Ready(_W) and ValidTarget(target, GetCastRange(myHero,_W)) then
-			CastSkillShot(_W, target)
-end	
+  if IsReady(_E) and ValidTarget(enemy, ERange) and UniversalMenu.KillSteal.E:Value() and GetHP(enemy) < getdmg("E",enemy) then
+		                      CastSkillShot(_E, target)
+                 end
 
- if ChampMenu.Combo.E:Value() and Ready(_E) and ValidTarget(target, GetCastRange(myHero,_E)) then
-			CastTargetSpell(_E, target)
-end      
-      
-      if ChampMenu.Combo.R:Value() and Ready(_R) and ValidTarget(target, GetCastRange(myHero,_R)) then
-			CastSkillShot(_R, target)
-      end	
-    end
-  end)  
+  if IsReady(_R) and ValidTarget(enemy, RRange) and UniversalMenu.KillSteal.R:Value() and GetHP(enemy) < getdmg("R",enemy) then
+		                      CastSkillShot(_R, target)
+                 end
+
+
+  
+
+  
+  if IsReady(_R) and and IsReady(_E) and IsReady(_W) and IsReady(_Q) and ValidTarget(enemy, RRange) and ValidTarget(enemy, ERange) and ValidTarget(enemy, WRange) and ValidTarget(enemy, QRange) and UniversalMenu.KillSteal.Combo:Value() and GetHP(enemy) < (getdmg("Q",enemy) + getdmg("W",enemy) + getdmg("E",enemy) + getdmg("R",enemy)) then
+		                      CastSkillShot(_Q, target) and CastSkillShot(_W, target) and CastSkillShot(_E, target) and CastSkillShot(_R, target)
+                 end
+
+      	
+	end   	
+       
+   
+end)
+
+
