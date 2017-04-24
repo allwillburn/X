@@ -10,7 +10,7 @@ end
 
 require("OpenPredict")
 require("DamageLib")
-require(DeftLib)
+require("DeftLib")
 
 
 local PreMenu = Menu("UPred", "UPred")
