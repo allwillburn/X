@@ -249,8 +249,8 @@ OnTick(function (myHero)
                                  CastSkillShot(_Q,QPred.castPos)
                        end
         end  
-  end)      
-  
+      end      
+  end)
   
   
   
