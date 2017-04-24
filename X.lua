@@ -13,7 +13,7 @@ require("DamageLib")
 require("DeftLib")
 
 
-local PreMenu = Menu("UPred", "UPred")
+local UPredMenu = Menu("UPred", "UPred")
 
 UPredMenu:SubMenu("Combo", "Combo")
 
